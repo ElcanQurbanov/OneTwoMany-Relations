@@ -32,9 +32,13 @@ namespace Entity_Framework_Slider.Controllers
 
 			IEnumerable<Product> products = await _context.Products.Include(m=>m.Images).Where(m => !m.SoftDelete).ToListAsync();
 
-			About about = await _context.Abouts.Include(m => m.Advantages).Where(m => !m.SoftDelete).FirstOrDefaultAsync();
+			About about = await _context.Abouts.Where(m => !m.SoftDelete).FirstOrDefaultAsync();
 
-			IEnumerable<Instagram> instagram = await _context.instagrams.Where(m => !m.SoftDelete).ToListAsync();
+
+            IEnumerable<Advantage> advantages = await _context.Advantages.Where(m => !m.SoftDelete).ToListAsync();
+
+
+            IEnumerable<Instagram> instagram = await _context.instagrams.Where(m => !m.SoftDelete).ToListAsync();
 
             IEnumerable<Say> says = await _context.says.Where(m => !m.SoftDelete).ToListAsync();
 
@@ -52,7 +56,13 @@ namespace Entity_Framework_Slider.Controllers
 				SliderInfo = sliderInfo,
 				Blogs = blogs,
 				Categories = categories,
-				Products = products
+				Products = products,
+				Advantages = advantages,
+				About = about,
+				Instagrams = instagram,
+				
+				says = says,
+
 			};
 			
 			return View(model);

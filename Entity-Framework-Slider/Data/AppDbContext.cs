@@ -21,6 +21,8 @@ namespace Entity_Framework_Slider.Data
         public DbSet<Instagram> instagrams { get; set; }
         public DbSet<Say> says { get; set; }
 
+
+
     }    
     
 }
